@@ -47,15 +47,15 @@ Can be merged to Main branch after checking
 ###### Back-end structure(Probably change):
 django-project
 ├──forum
-├── ├── admin                      // 后台管理
-├── ├── app                        // configuration
-├── ├── model                      // 模型层  
-├── ├── View                       // 视图接口层(创建响应函数) 
-├── ├── test                       // 单元测试  
-├── ├── url                        // 路径映射
-├── ├── migrations                 // 迁移文件
-├── Readme.md                      // help  
-├── static                         // 静态资源     
+├── ├── admin         // 后台管理
+├── ├── app           // configuration
+├── ├── model         // 模型层  
+├── ├── View          // 视图接口层(创建响应函数) 
+├── ├── test          // 单元测试  
+├── ├── url           // 路径映射
+├── ├── migrations    // 迁移文件
+├── Readme.md         // help  
+├── static            // 静态资源     
 │   ├── CSS  
 │   ├── js               
 │   ├── image           
