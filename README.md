@@ -45,8 +45,8 @@ Can be merged to Main branch after checking
 # Project structure
 
 ###### Back-end structure(Probably change):
-django-project
-├──forum
+django-project     
+├──forum     
 ├── ├── admin         // 后台管理     
 ├── ├── app           // configuration     
 ├── ├── model         // 模型层     
@@ -74,7 +74,7 @@ django-project
 
 
 To Do List:
-- requirement confirm *Done
+- Requirement confirm *Done
 - GUI design
 - database design  
 - Data access  
