@@ -76,7 +76,7 @@ django-project
 To Do List:
 - Requirement confirm *Done
 - GUI design
-- database design  
+- database design  *First edition completed
 - Data access  
 - logic achievement 
 - Interface provide 
