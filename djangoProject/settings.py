@@ -19,6 +19,7 @@ MEDIA_URL = '/media/'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -27,8 +28,11 @@ SECRET_KEY = 'ql29gj(q07w%7r6)c0h9n&00bfaaqgjb&2gzns4+k6p#p&c3*s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
+# 关闭浏览器时session过期
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# cookie持续时间为1周
+SESSION_COOKIE_AGE=604800
 
 
 # Application definition
@@ -60,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # Automatically created by pycharm,simply put it behind BASE_DIR. Don't modify
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [TEMPLATE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

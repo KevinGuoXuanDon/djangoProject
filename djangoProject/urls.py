@@ -19,9 +19,12 @@ from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from forum import views
+
 urlpatterns = [
+    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('forum', include('forum.url')),
+    path('forum/', include('forum.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # configure the static and media directory
 
