@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     # username,password,email,user_permissions,
     # is_staff,is_active,is_superuser,
     # last_login,date_joined
-    # We will use: username,password,user_permissions, is_active,last_login,date_joined
+    # We will use: username,email,password,user_permissions, is_active,last_login,date_joined
     NAME_MAX_LENGTH = 30
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
@@ -110,6 +110,7 @@ class Comment(models.Model):
     comment_to = models.OneToOneField(UserProfile,on_delete=models.CASCADE, related_name='receiver')
     comment_in = models.OneToOneField(Post,on_delete=models.CASCADE)
     content = models.TextField(null=False, blank=False)
+    # picture??? picture = models.ImageFiled()
     create_time = models.DateTimeField(auto_created=True)
 
     # there is no is_deleted filed in this class, so the comment can be truly be deleted
