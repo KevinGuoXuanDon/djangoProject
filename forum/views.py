@@ -5,4 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    return HttpResponse("If you see this sentence, your django is running successfully")
+
+    context_dict = {'boldmessage': 'Hot Posts, Sale of Used Items, Flats to Rent, Activities, Universities, Coffee Break'}
+
+    return render(request, 'forum/index.html', context=context_dict)
