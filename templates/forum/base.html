@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- stylesheet -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/static/css/prettyPhoto.css"/>
+    <link rel="stylesheet" href="/static/css/flexslider.css"/>
+    <link rel="stylesheet" href="/static/css/custom-styles.css">    
+
+    <title>
+        Glasgow Online Forum -
+        {% block title_block %}
+        {%  endblock %}
+    </title>
+</head>
+<body>
+    <h1>
+        {% block header_block %}
+            Welcome to Glasgow Online Forum
+        {% endblock %}
+    </h1>
+    <div>
+        {% block body_block %}
+        {% endblock %}
+    </div>
+
+    <div class="footer-container">
+        <div class="container">
+            <div style="margin-top: 30px" class="row">
+                <div class="span12 footer-col footer-sub">
+                    <div class="row no-margin">
+                        <a href="{% url 'forum:about' %}">About</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'forum:index' %}">Home</a>
+        </div>
+        
+
+    </div>
+    
+</body>
+</html>

@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlasgowOnlineForum</title>
-</head>
-<body>
-    <h1>Welcome to Glasgow Online Forum</h1>
-    <div>
-        We have six boards. <br>
-        <strong>{{  boldmessage }}</strong> <br>
-    </div>
+{% extends 'forum/base.html' %}
 
-    <div>
-        <a href="/forum/about">About</a> <br>
-    </div>
-    
-</body>
-</html>
+{% block title_block %}
+    Home
+{%  endblock %}
+
+{% block header_block %}
+    Welcome to Glasgow Online Forum
+{% endblock %}
+
+{% block body_block %}
+{% endblock %}

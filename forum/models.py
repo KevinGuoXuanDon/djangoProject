@@ -47,7 +47,7 @@ class UserProfile(models.Model):
 
     # toString
     def __str__(self):
-        return self.user.username;
+        return self.user.username
 
 
 # Also can be called Category
@@ -74,7 +74,7 @@ class PostManage(models.Manager):
 
 
 class Post(models.Model):
-    TITLE_MAX_LENGTH = 30;
+    TITLE_MAX_LENGTH = 30
     title = models.CharField(max_length=TITLE_MAX_LENGTH, null=False)
     content = models.TextField('content', blank=True, null=True)
     picture = models.ImageField(upload_to='post_images', blank=True)
