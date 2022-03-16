@@ -8,15 +8,17 @@ from forum.forms import UserForm, UserProfileForm
 # Create your views here.
 
 def index(request):
-
-    context_dict = {'boldmessage': 'Hot Posts, Sale of Used Items, Flats to Rent, Activities, Universities, Coffee Break'}
+    context_dict = {
+        'boldmessage': 'Hot Posts, Sale of Used Items, Flats to Rent, Activities, Universities, Coffee Break'}
 
     return render(request, 'forum/index.html', context=context_dict)
+
 
 def about(request):
     context_dict = {}
 
     return render(request, 'forum/about.html', context_dict)
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -26,22 +28,26 @@ def user_login(request):
         user = authenticate(username=username, password=password)
 
         if user:
-                if user.is_active:
-                    login(request, user)
-                    return redirect(reverse('forum:index'))
-                else:
-                    return HttpResponse("Your forum account is disabled.")
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('forum:index'))
+            else:
+                return HttpResponse("Your forum account is disabled.")
         else:
             print(f"Invalid login details: {username}, {password}")
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, 'forum/login.html')
 
+
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('forum:index'))
 
-# def publish(request):
+
+def publish(request):
+    return HttpResponse("test")
+
 
 def register(request):
     registered = False
