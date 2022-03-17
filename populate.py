@@ -10,7 +10,7 @@ from forum.models import *
 import _sqlite3
 
 def populate():
-    conn = _sqlite3.connect("forum/db.sqlites3")
+    conn = _sqlite3.connect("db.sqlites3")
     cursor = conn.cursor()
     print(conn)
     user1 = User.objects.create(username="admin",password="admin",is_staff=1,is_superuser=1)
