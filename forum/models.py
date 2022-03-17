@@ -14,7 +14,7 @@ class UserProfile(models.Model):
     NAME_MAX_LENGTH = 30
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
-    sex = models.CharField(max_length=10,blank=True, null=True)
+    sex = models.CharField(max_length=10, blank=True, null=True)
     post_number = models.IntegerField(default=0)
     like_number = models.IntegerField(default=0)
     follow_number = models.IntegerField(default=0)
@@ -57,7 +57,7 @@ class Module(models.Model):
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     description = models.CharField(max_length=DES_MAX_LENGTH)
     create_time = models.DateTimeField(auto_created=True)
-    slug = models.SlugField(unique= True)
+    slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -88,8 +88,8 @@ class Post(models.Model):
     is_deleted = models.BooleanField('isDelete', default=False)
     delete_time = models.DateTimeField('deleteTime', blank=True, null=True)
     object = PostManage()
-    parent_module = models.ForeignKey(Module,on_delete=models.CASCADE)
-    poster = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
+    parent_module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    poster = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -106,9 +106,9 @@ class StarContent(models.Model):
 
 class Comment(models.Model):
     # one user only make a Comment to another user in a post
-    comment_by = models.OneToOneField(UserProfile,on_delete=models.CASCADE, related_name='commenter')
-    comment_to = models.OneToOneField(UserProfile,on_delete=models.CASCADE, related_name='receiver')
-    comment_in = models.OneToOneField(Post,on_delete=models.CASCADE)
+    comment_by = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='commenter')
+    comment_to = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='receiver')
+    comment_in = models.OneToOneField(Post, on_delete=models.CASCADE)
     content = models.TextField(null=False, blank=False)
     # picture??? picture = models.ImageFiled()
     create_time = models.DateTimeField(auto_created=True)
