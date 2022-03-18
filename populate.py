@@ -13,8 +13,8 @@ def populate():
     conn = _sqlite3.connect("forum/db.sqlites3")
     cursor = conn.cursor()
     print(conn)
-    user1 = User.objects.create(username="admin",password="admin",is_staff=1,is_superuser=1)
-    UserProfile.objects.create(user=user1,name="admin1")
+    user1 = User.objects.create(username="admin2",password="admin",is_staff=1,is_superuser=1)
+    UserProfile.objects.create(user=user1,name="admin3")
 
     for user in UserProfile.objects.all():
         print(user)
