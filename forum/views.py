@@ -6,22 +6,23 @@ from django.contrib.auth import authenticate, login, logout
 from numpy import true_divide
 from forum.forms import UserForm, UserProfileForm
 from forum.models import Post
+from forum.models import Module, Post
 
 
 # Create your views here.
 
 def index(request):
-    context_dict = {
-        'boldmessage': 'Hot Posts, Sale of Used Items, Flats to Rent, Activities, Universities, Coffee Break'}
+    topic_list = Module.objects.order_by('create_time')[:6]
+    context_dict = {}
+    context_dict['topics'] = topic_list
+
 
     return render(request, 'forum/index.html', context=context_dict)
-
 
 def about(request):
     context_dict = {}
 
     return render(request, 'forum/about.html', context_dict)
-
 
 def user_login(request):
     if request.method == 'POST':
@@ -113,3 +114,10 @@ def post_delete(request, id):
     p.save()
     return HttpResponse("Delete post successfully!")
     
+def topic(request):
+    topic_list = Module.objects.order_by('create_time')[:6]
+    post_list = Post.objects.order_by('-create_time')[:6]
+    context_dict = {}
+    context_dict['topics'] = topic_list
+    context_dict['posts'] = post_list
+    return render(request, 'forum/topic.html', context=context_dict)
