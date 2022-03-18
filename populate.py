@@ -10,6 +10,7 @@ from forum.models import *
 import _sqlite3
 
 def populate():
+
     conn = _sqlite3.connect("db.sqlites3")
     cursor = conn.cursor()
     print(conn)
