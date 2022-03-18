@@ -116,7 +116,7 @@ def post_delete(request, id):
     
 def topic(request):
     topic_list = Module.objects.order_by('create_time')[:6]
-    post_list = Post.objects.order_by('-create_time')[:6]
+    post_list = Post.posts.order_by('-create_time')[:6]
     context_dict = {}
     context_dict['topics'] = topic_list
     context_dict['posts'] = post_list
