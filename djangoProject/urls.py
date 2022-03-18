@@ -28,3 +28,4 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # configure the static and media directory
 
+#new
