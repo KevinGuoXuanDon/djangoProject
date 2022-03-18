@@ -3,9 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
-from numpy import true_divide
+# from numpy import true_divide
 from forum.forms import UserForm, UserProfileForm
-from forum.models import Post
 from forum.models import Module, Post
 
 
@@ -118,7 +117,7 @@ def post_delete(request, id):
     
 def topic(request):
     topic_list = Module.objects.order_by('create_time')[:6]
-    post_list = Post.posts.order_by('-create_time')[:6]
+    post_list = Post.posts.order_by('-create_time')[:20]
     context_dict = {}
     context_dict['topics'] = topic_list
     context_dict['posts'] = post_list

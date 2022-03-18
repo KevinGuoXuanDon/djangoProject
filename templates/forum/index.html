@@ -1,13 +1,11 @@
 {% extends 'forum/base.html' %}
 {% load staticfiles %}
-
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% block title_block %}
     Home
 {%  endblock %}
 
 {% block header_block %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     Welcome to Glasgow Online Forum
 {% endblock %}
 
@@ -54,13 +52,8 @@
             </p>
             <img src="{% static 'images/coffee-break.jpeg' %}" alt="coffee-break" class="topic-image" />
 
-            <a href="#" class="topic-link"></a>
-                <img src="{% static 'images/coffee-break.jpeg' %}" alt="coffee-break" class="topic-image" />
-                <h3 class="topic-name">Coffee Break</h3>
-            </a>
         </div>
     </section>
-    <script src="script.js"></script>
 </div>
 
 {% endblock %}

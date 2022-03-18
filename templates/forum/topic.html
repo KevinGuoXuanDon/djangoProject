@@ -6,14 +6,18 @@
     Topics
 {%  endblock %}
 
+{% block header_block %}
+<div><h2>{{ topics.0.name }}</h2></div>
+{% endblock %}
+
 {% block body_block %}
 <div>
-    <div><h2>Topics</h2></div>
+
     {% if posts %}
         <ul>
         {% for post in posts %}
             <li>
-                <a>{{ post.name }}</a>
+                <a>{{ post.title }}</a>
             </li>
         {% endfor %}
         </ul>
