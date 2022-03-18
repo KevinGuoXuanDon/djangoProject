@@ -1,0 +1,25 @@
+{% extends 'forum/base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% block title_block %}
+    Topics
+{%  endblock %}
+
+{% block body_block %}
+<div>
+    <div><h2>Topics</h2></div>
+    {% if posts %}
+        <ul>
+        {% for post in posts %}
+            <li>
+                <a>{{ post.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no topics present.</strong>
+    {% endif %}
+</div>
+
+{% endblock %}

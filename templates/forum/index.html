@@ -13,49 +13,44 @@
 
 <div class="'container">
     <section>
-        <h1 class="section-heading">Six topic pages</h1>
+        <h1 class="section-heading">Topics</h1>
         <div class="all-topic-page">
+            
+            <h3 class="topic-name">{{ topics.0.name }}</h3>
+            <p class="topic description">
+                {{ topics.0.description }}
+            </p>
             <img src="{% static 'images/hot-post.jpeg' %}" alt="hot-post" class="topic-image" />
-            <h3 class="topic-name">Hot Posts</h3>
+    
+            <h3 class="topic-name">{{ topics.1.name }}</h3>
             <p class="topic description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                        commodi possimus iure hic excepturi. Corporis!
+                {{ topics.1.description }}
             </p>
-
             <img src="{% static 'images/used-sale.jpeg' %}" alt="sale-used" class="topic-image" />
-            <h3 class="topic-name">Sale of Used Items</h3>
+            
+            <h3 class="topic-name">{{ topics.2.name }}</h3>
             <p class="topic description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                        commodi possimus iure hic excepturi. Corporis!
+                {{ topics.2.description }}
             </p>
-
             <img src="{% static 'images/rent.jpeg' %}" alt="rent" class="topic-image" />
-            <h3 class="topic-name">Flats to Rent</h3>
+            
+            <h3 class="topic-name">{{ topics.3.name }}</h3>
             <p class="topic description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                        commodi possimus iure hic excepturi. Corporis!
+                {{ topics.3.description }}
             </p>
-
             <img src="{% static 'images/activity.jpeg' %}" alt="activity" class="topic-image" />
-            <h3 class="topic-name">Activities</h3>
+            
+            <h3 class="topic-name">{{ topics.4.name }}</h3>
             <p class="topic description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                        commodi possimus iure hic excepturi. Corporis!
+                {{ topics.4.description }}
             </p>
-
             <img src="{% static 'images/university.jpeg' %}" alt="university" class="topic-image" />
-            <h3 class="topic-name">Universities</h3>
+            
+            <h3 class="topic-name">{{ topics.5.name }}</h3>
             <p class="topic description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                        commodi possimus iure hic excepturi. Corporis!
+                {{ topics.5.description }}
             </p>
-
             <img src="{% static 'images/coffee-break.jpeg' %}" alt="coffee-break" class="topic-image" />
-            <h3 class="topic-name">Coffee Break</h3>
-            <p class="topic description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                        commodi possimus iure hic excepturi. Corporis!
-            </p>
 
         </div>
     </section>
