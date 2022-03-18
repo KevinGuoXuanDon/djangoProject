@@ -91,6 +91,7 @@ class Post(models.Model):
     # not truly delete in database, but marked as deleted, so it would not be queried out
     is_deleted = models.BooleanField('isDelete', default=False)
     delete_time = models.DateTimeField('deleteTime', blank=True, null=True)
+    # object = PostManage()
     posts = PostManage()
     parent_module = models.ForeignKey(Module, on_delete=models.CASCADE)
     poster = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

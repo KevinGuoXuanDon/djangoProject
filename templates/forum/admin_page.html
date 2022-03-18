@@ -1,0 +1,26 @@
+{% extends 'forum/base.html' %}
+
+{% block title_block %}
+Admin Page
+{% endblock %}
+
+<!-- Admin login  -->
+{% block body_block %}
+<div style="width: 100%;height: 60%;">
+    <div style="width: 300px; height: 100px; margin: 0 auto;margin-top: 15%;margin-bottom: 20%;">
+        <div class="span4">
+            {% for post in post_form %}
+            {% if post.is_deleted == false %}
+            <div>
+                title:{{post.title}}
+            </div>
+            <div>
+                poster:{{post.poster}}
+            </div>
+            <a href="{% url 'forum:delete_post' post.id %}">delete</a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
