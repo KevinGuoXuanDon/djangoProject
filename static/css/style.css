@@ -1,9 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
+
+/* coomon styles */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+/* End of common styles */
+
+/* section */
+.section {
+    background-color: antiquewhite ;
+    padding: 2rem 0;
+}
 
 
 /* All-topic-page */
-.all-topic-page{
+.all-topic-page {
     display:flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
 }
+
+/* topic-image */
+.topic-image {
+    width: 24vw;
+    height: 15vw;
+    object-fit: cover;
+}
+
+/* topic-link */
+.topic-link {
+    position: relative;
+}
+
+/* topic-name */
+.topic-name {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: rgb(8, 6, 6);
+    width: 0;
+}
+

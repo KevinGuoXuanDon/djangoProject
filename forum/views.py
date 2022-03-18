@@ -46,6 +46,8 @@ def user_logout(request):
 
 
 def publish(request):
+   
+        
     return HttpResponse("test")
 
 
