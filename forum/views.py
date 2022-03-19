@@ -12,6 +12,7 @@ from forum.models import Module, Post
 
 def index(request):
     topic_list = Module.objects.order_by('create_time')[:6]
+    topic_list[0] = "Host"
     context_dict = {}
     context_dict['topics'] = topic_list
 

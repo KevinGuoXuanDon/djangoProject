@@ -14,8 +14,8 @@ class UserProfile(models.Model):
     like_number = models.IntegerField(default=0)
     follow_number = models.IntegerField(default=0)
     follower_number = models.IntegerField(default=0)
-    follow_to = models.TextField(null=False)
-    follow_by = models.TextField(null=False)
+    follow_to = models.TextField(null=True)
+    follow_by = models.TextField(null=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
     is_muted = models.BooleanField(default=False)
 
