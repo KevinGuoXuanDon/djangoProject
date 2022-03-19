@@ -12,7 +12,7 @@
 
 
 {% block body_block %}
-
+    <a href="/forum/topic/{{ topiclist.0.name }}">{{ topiclist.0.name }}</a>  <a href="/forum/topic/{{ topiclist.1.name }}">{{ topiclist.1.name }}</a>  <a href="/forum/topic/{{ topiclist.2.name }}">{{ topiclist.2.name }}</a>  <a href="/forum/topic/{{ topiclist.3.name }}">{{ topiclist.3.name }}</a>  <a href="/forum/topic/{{ topiclist.4.name }}">{{ topiclist.4.name }}</a>  <a href="/forum/topic/{{ topiclist.5.name }}">{{ topiclist.5.name }}</a>
     {% if topic %}
         <h1>{{ topic.name }}</h1>
             {% if posts %}

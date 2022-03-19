@@ -118,12 +118,15 @@ def post_delete(request, id):
 def topic(request, topic_name_slug):
     context_dict = {}
     try:
+        topic_list = Module.objects.order_by('create_time')[:6]
         topic = Module.objects.get(slug=topic_name_slug)
         post_list_before = Post.posts.filter(parent_module=topic)
         post_list = post_list_before.order_by('-create_time')[:20]
         context_dict['posts'] = post_list
         context_dict['topic'] = topic
+        context_dict['topiclist'] = topic_list
     except Module.DoesNotExist:
         context_dict['posts'] = None
         context_dict['topic'] = None
+        context_dict['topiclist'] = None
     return render(request, 'forum/topic.html', context=context_dict)
