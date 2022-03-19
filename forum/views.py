@@ -119,7 +119,8 @@ def topic(request, topic_name_slug):
     context_dict = {}
     try:
         topic = Module.objects.get(slug=topic_name_slug)
-        post_list = Post.posts.filter(parent_module=topic)
+        post_list_before = Post.posts.filter(parent_module=topic)
+        post_list = post_list_before.order_by('-create_time')[:20]
         context_dict['posts'] = post_list
         context_dict['topic'] = topic
     except Module.DoesNotExist:
