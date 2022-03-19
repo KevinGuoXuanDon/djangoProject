@@ -4,72 +4,73 @@
 
 {% block title_block %}
     Home
-    
 {%  endblock %}
 
-{% block header_block %}
-    
+{% block header_block %}   
 {% endblock %}
 
 {% block body_block %}
-
-<div class="'container border-bottom">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<link rel="stylesheet" href="/static/css/index.css">
+<div class="album py-5 bg-light ">
+    <div class="'container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+            
+                <div class="col-md-4">
+                    <a href="/forum/topic/{{ topics.0.name }}">
+                        <h3 class="topic-name">{{ topics.0.name }}</h3>
+                        <img src="{% static 'images/hot-post.webp' %}" alt="hot-post" class="topic-image" />
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/forum/topic/{{ topics.1.name }}">
+                       <h3 class="topic-name">{{ topics.1.name }}</h3>
+                    <img src="{% static 'images/used-sale.jpeg' %}" alt="sale-used" class="topic-image" /> 
+                    </a>
+                    
+                </div>
         
-            <div class="col-md-4">
-                <a href="/forum/topic/{{ topics.0.name }}">
-                    <h3 class="topic-name">{{ topics.0.name }}</h3>
-                    <img src="{% static 'images/hot-post.jpeg' %}" alt="hot-post" class="topic-image" />
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="/forum/topic/{{ topics.1.name }}">
-                   <h3 class="topic-name">{{ topics.1.name }}</h3>
-                <img src="{% static 'images/used-sale.jpeg' %}" alt="sale-used" class="topic-image" /> 
-                </a>
+                <div class="col-md-4">
+                    <a href="/forum/topic/{{ topics.2.name }}">
+                        <h3 class="topic-name">{{ topics.2.name }}</h3>
+                        <img src="{% static 'images/rent.jpeg' %}" alt="rent" class="topic-image" />
+                    </a>
+                    
+                </div>
                 
-            </div>
+                <div class="col-md-4">
+                    <a href="/forum/topic/{{ topics.3.name }}">
+                        <h3 class="topic-name">{{ topics.3.name }}</h3>
+                    <img src="{% static 'images/activity.jpeg' %}" alt="activity" class="topic-image" />
+                    </a>
+                    
+                </div>
     
-            <div class="col-md-4">
-                <a href="/forum/topic/{{ topics.2.name }}">
-                    <h3 class="topic-name">{{ topics.2.name }}</h3>
-                    <img src="{% static 'images/rent.jpeg' %}" alt="rent" class="topic-image" />
-                </a>
+                <div class="col-md-4">
+                    <a href="/forum/topic/{{ topics.4.name }}">
+                        <h3 class="topic-name">{{ topics.4.name }}</h3>
+                        <img src="{% static 'images/university.jpeg' %}" alt="university" class="topic-image" />
+                    </a>
+                    
+                </div>
+    
+                <div class="col-md-4">
+                    <a href="/forum/topic/{{ topics.5.name }}">
+                        <h3 class="topic-name">{{ topics.5.name }}</h3>
+                    <img src="{% static 'images/coffee-break.jpeg' %}" alt="coffee-break" class="topic-image" />
+                    </a>
+                    
+                </div>
                 
-            </div>
-            
-            <div class="col-md-4">
-                <a href="/forum/topic/{{ topics.3.name }}">
-                    <h3 class="topic-name">{{ topics.3.name }}</h3>
-                <img src="{% static 'images/activity.jpeg' %}" alt="activity" class="topic-image" />
-                </a>
+               
                 
-            </div>
-
-            <div class="col-md-4">
-                <a href="/forum/topic/{{ topics.4.name }}">
-                    <h3 class="topic-name">{{ topics.4.name }}</h3>
-                    <img src="{% static 'images/university.jpeg' %}" alt="university" class="topic-image" />
-                </a>
                 
-            </div>
-
-            <div class="col-md-4">
-                <a href="/forum/topic/{{ topics.5.name }}">
-                    <h3 class="topic-name">{{ topics.5.name }}</h3>
-                <img src="{% static 'images/coffee-break.jpeg' %}" alt="coffee-break" class="topic-image" />
-                </a>
                 
-            </div>
+               
+    
             
-           
-            
-            
-            
-           
-
-        
-    </div>
+        </div>
+</div>
+    
 </div>
 
 {% endblock %}
