@@ -1,29 +1,33 @@
 {% extends 'forum/base.html' %}
 {% load staticfiles %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 {% block title_block %}
-    Topics
+    {% if topic %}
+        {{ topic.name }}
+    {% else %}
+        Unknown topic
+    {% endif %}
 {%  endblock %}
 
-{% block header_block %}
-<div><h2>{{ topics.0.name }}</h2></div>
-{% endblock %}
 
 {% block body_block %}
-<div>
 
-    {% if posts %}
-        <ul>
-        {% for post in posts %}
-            <li>
-                <a>{{ post.title }}</a>
-            </li>
-        {% endfor %}
-        </ul>
+    {% if topic %}
+        <h1>{{ topic.name }}</h1>
+            {% if posts %}
+                <ul>
+                    {% for post in posts %}
+                        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>No posts currently in topic.</strong>
+            {% endif %}
+
     {% else %}
-        <strong>There are no topics present.</strong>
+        The specified topic does not exist.
     {% endif %}
-</div>
+
 
 {% endblock %}

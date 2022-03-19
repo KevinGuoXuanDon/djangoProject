@@ -115,10 +115,14 @@ def post_delete(request, id):
     p.save()
     return HttpResponse("Delete post successfully!")
     
-def topic(request):
-    topic_list = Module.objects.order_by('create_time')[:6]
-    post_list = Post.posts.order_by('-create_time')[:20]
+def topic(request, topic_name_slug):
     context_dict = {}
-    context_dict['topics'] = topic_list
-    context_dict['posts'] = post_list
+    try:
+        topic = Module.objects.get(slug=topic_name_slug)
+        post_list = Post.posts.filter(parent_module=topic)
+        context_dict['posts'] = post_list
+        context_dict['topic'] = topic
+    except Module.DoesNotExist:
+        context_dict['posts'] = None
+        context_dict['topic'] = None
     return render(request, 'forum/topic.html', context=context_dict)
