@@ -1,0 +1,75 @@
+{% extends 'forum/base.html' %}
+
+{% block title_block %}
+    Register
+{% endblock %}
+
+{% block body_block %}
+
+
+<div class="container" style="width:520px;margin: 0 auto;background: #e1e1e1;padding: 13px;">
+<h1>Register for the Forum</h1>
+
+{% if registered %}
+    <strong>Thank you for registering!</strong>
+    <a href="{% url 'forum:index' %}">Return to the homepage.</a><br /> <a href="{% url 'forum:logout' %}">Logout.</a><br />
+{% else %}
+   <strong>Please register here!</strong> 
+    <!-- <form id="user_form" method="post" action="{% url 'forum:register' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+
+        <input type="submit" name="submit" value="Register" />
+    </form> -->
+
+    <form role="form"  id="user_form" method="post" action="{% url 'forum:register' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+      
+        <div class="form-group">
+            <label class="required" for="id_username">
+            Username:</label>
+            <input class="form-control" id="id_username" maxlength="30"
+                 name="username" type="text" />
+            <span class="helptext">
+            Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="required" for="id_email">
+            E-mail:</label>
+            <input class="form-control" id="id_email" name="email"
+                 type="email" />
+                </div>
+        <div class="form-group">
+        <label class="required" for="id_password1">
+            Password:</label>
+            <input class="form-control" id="id_password1" name="password"
+                type="password" />
+        </div>
+         <div class="form-group">
+            <label class="required" for="id_password2">
+                Password confirmation:</label>
+            <input class="form-control" id="id_password2" name="password2"
+                 type="password" />
+            <span class="helptext">
+                 Enter the same password as before, for verification.
+           </span>
+       </div>
+  
+
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Example file input</label>
+        <input type="file" name="picture" class="form-control-file" id="exampleFormControlFile1">
+      </div>
+
+
+        <button type="submit" class="btn btn-dark">Register</button>
+    </form>
+    
+</div>
+
+{% endif %}
+
+{% endblock %}

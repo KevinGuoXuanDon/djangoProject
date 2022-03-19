@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- stylesheet -->
+   
+
+    <title>
+        Glasgow Online Forum -
+        {% block title_block %}
+        {%  endblock %}
+    </title>
+
+
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+</head>
+<body>
+    <h1>
+        {% block header_block %}
+            Welcome to Glasgow Online Forum
+        {% endblock %}
+    </h1>
+    <div>
+        {% block body_block %}
+        {% endblock %}
+    </div>
+
+    <div class="footer-container">
+        <div class="container">
+            <div style="margin-top: 30px" class="row">
+                <div class="span12 footer-col footer-sub">
+                    <div class="row no-margin">
+                        <a href="{% url 'forum:about' %}">About</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'forum:index' %}">Home</a>
+                        <li><a href="{% url 'forum:register' %}">Sign Up</a></li>
+
+        </div>
+        
+
+    </div>
+    
+</body>
+</html>
