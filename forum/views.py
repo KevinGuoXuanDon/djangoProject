@@ -130,3 +130,7 @@ def topic(request, topic_name_slug):
         context_dict['topic'] = None
         context_dict['topiclist'] = None
     return render(request, 'forum/topic.html', context=context_dict)
+
+def post(request):
+    context_dict = {}
+    return render(request, 'forum/post.html', context_dict)
