@@ -117,7 +117,7 @@ def admin(request):
 def admin_page(request):
     return render(request, 'forum/admin_page.html', {"post_form":Post.objects.all()})
 
-def post_delete(request, id):
+def delete_post(request, id):
     p=Post.objects.get(id=id)
     p.is_deleted = True
     p.delete_time = timezone.now()
