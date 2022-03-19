@@ -131,6 +131,13 @@ def topic(request, topic_name_slug):
         context_dict['topiclist'] = None
     return render(request, 'forum/topic.html', context=context_dict)
 
-def post(request):
+def post(request, id):
     context_dict = {}
+    try:
+        post = Post.posts.get(id=id)
+        context_dict['post'] = post
+
+    except Post.DoesNotExist:
+        context_dict['post'] = None
+
     return render(request, 'forum/post.html', context_dict)

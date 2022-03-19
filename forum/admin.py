@@ -5,7 +5,10 @@ from forum.models import UserProfile, Module, Post
 class ModuleAdmin(admin.ModelAdmin):
     prepopulated_fileds = {'slug':('name',)}
 
+class PostAdmin(admin.ModelAdmin):
+    prepopulated_fileds = {'slug':('title',)}
+
 admin.site.register(UserProfile)
 admin.site.register(Module, ModuleAdmin)
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
 

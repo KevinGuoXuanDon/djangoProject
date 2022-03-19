@@ -1,9 +1,28 @@
 {% extends 'forum/base.html' %}
+{% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 {% block title_block %}
-    About Glasgow Online Forum
-{% endblock %}
+    {% if post %}
+        {{ post.name }}
+    {% else %}
+        Unknown post
+    {% endif %}
+{%  endblock %}
+
 
 {% block body_block %}
-    This webiste is built by five students from University of Glasgow.
+
+    <a><button type="button">Go back</button></a> <br />
+
+    {% if post %}
+        <h1>{{ post.name }}</h1>
+
+
+
+    {% else %}
+        No Page Here!
+    {% endif %}
+
+
 {% endblock %}
