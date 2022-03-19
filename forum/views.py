@@ -1,3 +1,4 @@
+from base64 import standard_b64decode
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -12,9 +13,15 @@ from forum.models import Module, Post
 
 def index(request):
     topic_list = Module.objects.order_by('create_time')[:6]
+    standard_list = Module.objects.order_by('create_time')[:6]
+    for topic in standard_list:
+        topic.name = str.lower(topic.name)
+        topic.name = topic.name.replace(" ","-")
+    
+
     context_dict = {}
     context_dict['topics'] = topic_list
-
+    context_dict['standards'] = standard_list
 
     return render(request, 'forum/index.html', context=context_dict)
 
@@ -124,13 +131,19 @@ def topic(request, topic_name_slug):
         topic = Module.objects.get(slug=topic_name_slug)
         post_list_before = Post.posts.filter(parent_module=topic)
         post_list = post_list_before.order_by('-create_time')[:20]
+        standard_list = Module.objects.order_by('create_time')[:6]
+        for standard in standard_list:
+            standard.name = str.lower(standard.name)
+            standard.name = standard.name.replace(" ","-")
         context_dict['posts'] = post_list
         context_dict['topic'] = topic
         context_dict['topiclist'] = topic_list
+        context_dict['standards'] = standard_list
     except Module.DoesNotExist:
         context_dict['posts'] = None
         context_dict['topic'] = None
         context_dict['topiclist'] = None
+        context_dict['standards'] = None
     return render(request, 'forum/topic.html', context=context_dict)
 
 def post(request, id):
