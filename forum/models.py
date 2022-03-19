@@ -6,10 +6,41 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 class UserProfile(models.Model):
+    NAME_MAX_LENGTH = 30
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    website = models.URLField(blank=True)
+    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
+    sex = models.CharField(max_length=10, blank=True, null=True)
+    post_number = models.IntegerField(default=0)
+    like_number = models.IntegerField(default=0)
+    follow_number = models.IntegerField(default=0)
+    follower_number = models.IntegerField(default=0)
+    follow_to = models.TextField(null=False)
+    follow_by = models.TextField(null=False)
     picture = models.ImageField(upload_to='profile_images', blank=True)
+    is_muted = models.BooleanField(default=False)
 
+    # customise get set method for two list
+    def set_follow_to_list(self, element):
+        if self.follow_to:
+            self.follow_to = self.follow_to + "," + element
+        else:
+            self.follow_to = element
+
+    def get_follow_to_list(self):
+        if self.follow_to:
+            return self.follow_to.split(",")
+
+    def set_follow_by_list(self, element):
+        if self.follow_by:
+            self.follow_by = self.follow_by + "," + element
+        else:
+            self.follow_by = element
+
+    def get_follow_by_list(self):
+        if self.follow_by:
+            return self.follow_by.split(",")
+
+    # toString
     def __str__(self):
         return self.user.username
 
