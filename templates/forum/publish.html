@@ -1,0 +1,89 @@
+{% extends 'forum/base.html' %}
+
+{% block title_block %}
+    Publish a post
+{%  endblock %}
+
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/custom-styles.css">
+
+{% block body_block %}
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/custom-styles.css">
+
+<body class="home" style="font-size: 18px">
+
+    <div class="color-bar-1"></div>
+    <div class="color-bar-2 color-bg"></div>
+    
+    
+    <h3>Publish a post</h3>
+    <form accept-charset="UTF-8" action="/publish/" class="publish" id="new_topic" method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <table width="100%" border="0" cellspacing="0" cellpadding="6">
+            <colgroup>
+                <col width="140">
+                <col>
+            </colgroup>
+            <tbody>
+    
+            <tr>
+                <th>Title</th>
+                <td>
+                    <label>
+                        <input required id="topic_title" maxlength="80" name="t_title" size="60" type="text">
+                    </label>
+                </td>
+            </tr>
+    
+            <tr>
+                <th valign="top">Post Intro</th>
+                <td>
+                    <label>
+                        <input required id="topic_introduce" maxlength="80" name="t_introduce" size="60" type="text">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">Post content</th>
+                <td>
+                    <div class="body_count">
+                        <textarea style="width: 700px;" cols="62" rows="20" name="t_content"></textarea>
+                    </div>
+                </td>
+            </tr>
+    
+            <tr>
+                <th>Cover image</th>
+                <td>
+    
+                    <div>
+                        <input type="file" name="t_photo" accept="image/*">
+                    </div>
+                </td>
+            </tr>
+    
+            <tr>
+                <th>Kind of Topics</th>
+                <td>
+                    <div>
+                        <select name="t_kind">
+                            {% for kind in kinds %}
+                                <option value="{{ kind.id }}">{{ kind.k_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </td>
+            </tr>
+    
+            <tr>
+                <th></th>
+                <td>
+                    <button class="btn btn-large" type="submit">Publish the post</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+{% endblock %}
