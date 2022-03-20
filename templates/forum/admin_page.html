@@ -29,7 +29,7 @@ Admin Page
                 <span class="post_delete"><a href="{% url 'forum:delete_post' 1 %}">delete</a></span>
             </div> -->
             {% for post in post_form %}
-            {% if post.is_deleted == false %}
+            {% if post.is_deleted == False %}
             <div class="list_out">
                 <span class="post_id">{{post.id}}</span>
                 <span class="post_title">{{post.title}}</span>

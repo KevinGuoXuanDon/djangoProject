@@ -121,7 +121,7 @@ def delete_post(request, id):
     p.is_deleted = True
     p.delete_time = timezone.now()
     p.save()
-    return HttpResponse("Delete post successfully!")
+    return HttpResponseRedirect(reverse('forum:admin_page'))
     
 def topic(request, topic_name_slug):
     context_dict = {}

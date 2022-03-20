@@ -29,6 +29,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    white-space: nowrap;
 }
 .post_title{
     width:200px;
@@ -36,13 +37,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    white-space: nowrap;
 }
 .post_poster{
-    width:80px;
+    width:100px;
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    white-space: nowrap;
 }
 .post_create_time{
     width:120px;
@@ -50,6 +53,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    white-space: nowrap;
 }
 .post_likes{
     width:60px;
@@ -57,6 +61,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    white-space: nowrap;
 }
 .post_views{
     width:60px;
@@ -64,6 +69,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    white-space: nowrap;
 }
 .post_delete{
     width:60px;
@@ -71,6 +77,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
+    white-space: nowrap;
 }
 .main_out{
     max-width: 1000px;
