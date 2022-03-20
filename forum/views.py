@@ -131,7 +131,7 @@ def admin(request):
         password = request.POST.get('password')
 
         if username == 'admin' and password == '123456':
-            # 管理员登录成功
+            # admin login successful
             return redirect(reverse('forum:admin_page'))
         else:
             return HttpResponse("Invalid login details supplied.")
