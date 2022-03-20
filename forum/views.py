@@ -56,10 +56,9 @@ def user_logout(request):
 
 
 def publish(request):
-   
-        
-    return HttpResponse("test")
+    context_dict = {}
 
+    return render(request, 'forum/publish.html', context_dict)
 
 def register(request):
     registered = False
@@ -149,10 +148,15 @@ def topic(request, topic_name_slug):
 def post(request, id):
     context_dict = {}
     try:
+        
         post = Post.posts.get(id=id)
+        topic = post.parent_module.name
+        topic = str.lower(topic)
+        topic = topic.replace(" ","-")
         context_dict['post'] = post
+        context_dict['topic'] = topic
 
     except Post.DoesNotExist:
         context_dict['post'] = None
-
+        context_dict['topic']= None
     return render(request, 'forum/post.html', context_dict)
