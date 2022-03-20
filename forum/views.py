@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from forum import models
 # from numpy import true_divide
 from forum.forms import PostForm, UserForm, UserProfileForm
 from forum.models import Module, Post
@@ -236,3 +237,4 @@ class IncreaseLikesView(View):
         post.likes += 1
         post.save()
         return HttpResponse('success')
+
