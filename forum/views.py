@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 # from numpy import true_divide
 from forum.forms import PostForm, UserForm, UserProfileForm
 from forum.models import Module, Post
@@ -31,6 +33,7 @@ def about(request):
 
     return render(request, 'forum/about.html', context_dict)
 
+@login_required
 def published(request):
     context_dict = {}
 
@@ -46,16 +49,32 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect(reverse('forum:index'))
+                next = request.POST.get('next')
+                if next:
+                    return redirect(next)
+                return JsonResponse(data={
+                        'code': 0,
+                        'msg': 'login success',
+                        'data': {
+                            'url': reverse('forum:index')
+                        }
+                })
             else:
-                return HttpResponse("Your forum account is disabled.")
+                return JsonResponse(data={
+                        'code': -1,
+                        'msg': 'user is inactive',
+                        'data': {}
+                })
         else:
-            print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
+            return JsonResponse(data={
+                        'code': -1,
+                        'msg': 'Invalid login details supplied.',
+                        'data': {}
+                })
     else:
         return render(request, 'forum/login.html')
 
-
+@login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('forum:index'))
@@ -81,14 +100,20 @@ def register(request):
 
             profile.save()
 
-            registered = True
+            return JsonResponse(data={
+                'code': 0,
+                'msg': 'ok',
+                'data': {}
+            })
 
         else:
-            print(user_form.errors, profile_form.errors)
+            return JsonResponse(data={
+                'code': -1,
+                'msg': str(user_form.errors)
+            })
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-
     return render(request, 'forum/register.html', context = {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 def admin(request):
@@ -116,13 +141,15 @@ def admin(request):
 def admin_page(request):
     return render(request, 'forum/admin_page.html', {"post_form":Post.objects.all()})
 
+@login_required
 def delete_post(request, id):
     p=Post.objects.get(id=id)
     p.is_deleted = True
     p.delete_time = timezone.now()
     p.save()
     return HttpResponseRedirect(reverse('forum:admin_page'))
-    
+
+@login_required  
 def topic(request, topic_name_slug):
     context_dict = {}
     try:
@@ -145,6 +172,7 @@ def topic(request, topic_name_slug):
         context_dict['standards'] = None
     return render(request, 'forum/topic.html', context=context_dict)
 
+@login_required
 def post(request, id):
     context_dict = {}
     try:
@@ -161,7 +189,7 @@ def post(request, id):
         context_dict['topic']= None
     return render(request, 'forum/post.html', context_dict)
 
-
+@login_required
 def publish(request):
     standard_list = Module.objects.order_by('create_time')[:1]
     for topic in standard_list:
