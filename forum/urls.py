@@ -15,4 +15,5 @@ urlpatterns = [
     path('delete_post/<id>', views.delete_post, name='delete_post'),
     path('topic/<slug:topic_name_slug>/', views.topic, name='topic'),
     path('post/<id>/', views.post, name='post'),
+    path('published/', views.published, name='published'),
 ]

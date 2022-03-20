@@ -5,9 +5,9 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 # from numpy import true_divide
-from forum.forms import UserForm, UserProfileForm
+from forum.forms import PostForm, UserForm, UserProfileForm
 from forum.models import Module, Post
-
+from django import forms
 
 # Create your views here.
 
@@ -29,6 +29,11 @@ def about(request):
     context_dict = {}
 
     return render(request, 'forum/about.html', context_dict)
+
+def published(request):
+    context_dict = {}
+
+    return render(request, 'forum/published.html', context_dict)
 
 def user_login(request):
     if request.method == 'POST':
@@ -53,12 +58,6 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('forum:index'))
-
-
-def publish(request):
-    context_dict = {}
-
-    return render(request, 'forum/publish.html', context_dict)
 
 def register(request):
     registered = False
@@ -160,3 +159,10 @@ def post(request, id):
         context_dict['post'] = None
         context_dict['topic']= None
     return render(request, 'forum/post.html', context_dict)
+
+
+def publish(request):
+    if request.method == "POST":
+        print(request.POST)
+
+    return render(request, 'forum/publish.html')
