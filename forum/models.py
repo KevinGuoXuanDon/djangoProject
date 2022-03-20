@@ -8,7 +8,6 @@ from django.template.defaultfilters import slugify
 class UserProfile(models.Model):
     NAME_MAX_LENGTH = 30
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     sex = models.CharField(max_length=10, blank=True, null=True)
     post_number = models.IntegerField(default=0)
     like_number = models.IntegerField(default=0)

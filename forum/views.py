@@ -109,7 +109,7 @@ def register(request):
             return JsonResponse(data={
                 'code': 0,
                 'msg': 'ok',
-                'data': {}
+                'data': {'url': reverse('forum:login')}
             })
 
         else:
