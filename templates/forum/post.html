@@ -12,14 +12,17 @@
 
 
 {% block body_block %}
-
-    <a href="/forum/topic/{{ topic }}"> <button type="button">Go back</button></a> <br />
+    <!-- Return to the topic page -->
+    <a href="/forum/topic/{{ topic }}"> <button type="button">Return</button></a> <br />
 
     {% if post %}
+        <!-- Show the post here -->
         <h1>{{ post.title }}</h1>
         <h5>  Author:  {{ post.poster }}  </h5>
         <h5>  Publish date: {{ post.create_time}} </h5>
         <h2>{{ post.content }}</h2>
+
+        <!-- Here is the like and save icons -->
         <script type="text/javascript" src="/static/js/showicon1.js"></script>
         <script type="text/javascript" src="/static/js/showicon2.js"></script>
         <div id = "div3" style="display:block">
@@ -64,6 +67,7 @@
         
 
     {% if user.is_authenticated %}
+    <!-- if user login, show the reply -->
     <script type="text/javascript" src="/static/js/showreply.js"></script>
     <div id="div2" style="display:block">
         <input type="button" value="Reply" onClick="show()"/>
