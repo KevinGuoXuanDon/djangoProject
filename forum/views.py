@@ -163,6 +163,18 @@ def post(request, id):
 
 def publish(request):
     if request.method == "POST":
-        print(request.POST)
+        post_form = PostForm(request.POST)
+
+        if post_form.is_valid():
+            post = post_form.save()
+            if 'picture' in request.FILES:
+                post.picture = request.FILES['picture']
+                
+            post.save()
+        else:
+            print(post_form.errors)
+
+    else:
+        post_form = PostForm()
 
     return render(request, 'forum/publish.html')
