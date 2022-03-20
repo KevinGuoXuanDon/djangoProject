@@ -1,0 +1,78 @@
+{% extends 'forum/base.html' %}
+
+{% block title_block %}
+    Publish a post
+{%  endblock %}
+
+
+
+{% block body_block %}
+<a href="{% url 'forum:topic' standards.0.name %}"> <button type="button">Return</button></a> <br />
+<body class="home" style="font-size: 18px">
+    
+    
+    <h3>Publish a post</h3>
+    <form accept-charset="UTF-8" action="{% url 'forum:published' %}" class="publish" id="new_topic" method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <table width="100%" border="0" cellspacing="0" cellpadding="6">
+            <colgroup>
+                <col width="140">
+                <col>
+            </colgroup>
+            <tbody>
+    
+            <tr>
+                <th>Title</th>
+                <td>
+                    <label>
+                        <input required id="topic_title" maxlength="80" name="t_title" size="60" type="text">
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <th valign="top">Content</th>
+                <td>
+                    <div class="body_count">
+                        <textarea style="width: 700px;" cols="62" rows="20" name="t_content"></textarea>
+                    </div>
+                </td>
+            </tr>
+    
+            <tr>
+                <th>Cover image</th>
+                <td>
+    
+                    <div>
+                        <input type="file" name="t_photo" accept="image/*">
+                    </div>
+                </td>
+            </tr>
+    
+            <tr>
+                <th>Topic</th>
+                <td>
+                    <div>
+                        <select name="t_kind">
+                            <option value ="Hot Posts">Hot Posts</option>
+                            <option value ="Sale of Used Items">Sale of Used Items</option>
+                            <option value ="Flats to Rent">Flats to Rent</option>
+                            <option value ="Activities">Activities</option>
+                            <option value ="Universities">Universities</option>
+                            <option value ="Coffee Break">Coffee Break</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+    
+            <tr>
+                <th></th>
+                <td>
+                    <button type="submit">Publish</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'forum/base.html' %}
+
+{% block title_block %}
+Admin Page
+{% endblock %}
+
+<!-- Admin login  -->
+{% block body_block %}
+<link rel="stylesheet" href="/static/css/admin.css">
+<div style="width: 100%;height: 60%;">
+    <div class="main_out">
+        <div class="span4">
+            <div class="list_out">
+                <span class="post_id bold">id</span>
+                <span class="post_title bold">title</span>
+                <span class="post_poster bold">poster</span>
+                <span class="post_create_time bold">create time</span>
+                <span class="post_likes bold">likes</span>
+                <span class="post_views bold">views</span>
+                <span class="post_delete bold">action</span>
+            </div>
+            <!-- <div class="list_out">
+                <span class="post_id">111</span>
+                <span class="post_title">this is post title</span>
+                <span class="post_poster">hhhhhh</span>
+                <span class="post_create_time">2022-1-1</span>
+                <span class="post_likes">20</span>
+                <span class="post_views">100</span>
+                <span class="post_delete"><a href="{% url 'forum:delete_post' 1 %}">delete</a></span>
+            </div> -->
+            {% for post in post_form %}
+            {% if post.is_deleted == False %}
+            <div class="list_out">
+                <span class="post_id">{{post.id}}</span>
+                <span class="post_title">{{post.title}}</span>
+                <span class="post_poster">{{post.poster.name}}</span>
+                <span class="post_create_time">{{post.create_time}}</span>
+                <span class="post_likes">{{post.likes}}</span>
+                <span class="post_views">{{post.views}}</span>
+                <span class="post_delete">
+                    <a href="{% url 'forum:delete_post' post.id %}">delete</a>
+                </span>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

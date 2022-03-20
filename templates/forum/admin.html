@@ -1,0 +1,33 @@
+{% extends 'forum/base.html' %}
+
+{% block title_block %}
+Admin login
+{% endblock %}
+
+<!-- Admin login  -->
+{% block body_block %}
+<link rel="stylesheet" href="/static/css/admin.css">
+<div style="width: 100%;height: 60%;">
+    <div style="width: 300px; height: 100px; margin: 0 auto;margin-top: 15%;margin-bottom: 20%;">
+        <div class="span4">
+            <div class="admin_title">Admin login</div>
+            <form id="admin_login_form" method="post" action="{% url 'forum:admin' %}">
+                {% csrf_token %}
+                <div class="input-prepend" style="width: 300px;">
+                    <span class="add-on">Admin username:</span>
+                    <input name="username" style="width: 200px" class="span2" id="uid" size="16" type="text"
+                        placeholder="Username">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on">Admin password:</span>
+                    <input name="password" style="width: 200px" class="span2" id="pwd" size="16" type="password"
+                        placeholder="Password">
+                </div>
+                <input id="login-button" class="submit_btn" type="submit" value="Login">
+                </input>
+        </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
