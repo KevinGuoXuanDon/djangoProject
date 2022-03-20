@@ -17,8 +17,9 @@ function messageUser (text) {
           } else {
             messageUser(res.msg)
             setTimeout(function () {
-                window.location.href = res.data.url
+                window.location.href =  formData.get("next")
             }, 1000)
+
           }
         }
       })

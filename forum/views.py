@@ -59,7 +59,8 @@ def user_login(request):
                     'code': 0,
                     'msg': 'login success',
                     'data': {
-                        'url': reverse('forum:index')
+                        'url': reverse('forum:index'),
+                        'next': next
                     }
                 })
             else:
