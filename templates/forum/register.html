@@ -23,7 +23,7 @@
             <input type="submit" name="submit" value="Register" />
         </form> -->
     
-        <form role="form"  id="user_form" method="post" action="{% url 'forum:register' %}" enctype="multipart/form-data">
+        <form role="form"  id="user_form" method="post" action="{% url 'forum:register' %}" enctype="multipart/form-data" onsubmit= "register();return false">
             {% csrf_token %}
           
             <div class="form-group">
@@ -72,14 +72,14 @@
     {% endif %}
 
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" id="content">
+      <div class="modal-body" id="content1">
         
       </div>
       <div class="modal-footer">

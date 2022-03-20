@@ -1,9 +1,9 @@
 function messageUser (text) {
-    $('#content').html(text)
-    $('#exampleModal').modal('show')
+    $('#content1').html(text)
+    $('#exampleModal1').modal('show')
   }
     function register () {
-      const loginForm = $('#register_form')
+      const loginForm = $('#user_form')
       const formData = new FormData(loginForm[0])
       $.ajax({
         url: '/forum/register/',
