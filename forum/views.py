@@ -1,4 +1,6 @@
 from base64 import standard_b64decode
+
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -8,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 # from numpy import true_divide
 from forum.forms import PostForm, UserForm, UserProfileForm
-from forum.models import Module, Post
+from forum.models import Module, Post, UserProfile
 from django import forms
 from django.views import View
 
@@ -214,12 +216,17 @@ def publish(request):
 
     if request.method == "POST":
         post_form = PostForm(request.POST)
-
+        title = post_form.data.get("title")
+        content = post_form.data.get("content")
+        parent_module_name = post_form.data.get("parent_module")
+        print(parent_module_name)
+        parent_module = Module.objects.get(name=parent_module_name)
+        user = User.objects.get(username=request.user.username)
+        userprofile = UserProfile.objects.get(user=user)
         if post_form.is_valid():
-            post = post_form.save()
+            post = Post.posts.create(title=title, content=content, parent_module=parent_module, poster=userprofile)
             if 'picture' in request.FILES:
                 post.picture = request.FILES['picture']
-
             post.save()
         else:
             print(post_form.errors)

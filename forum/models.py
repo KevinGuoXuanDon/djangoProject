@@ -80,7 +80,7 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
     comment_number = models.IntegerField(default=0)
     top = models.BooleanField(default=False)
-    create_time = models.DateTimeField(auto_created=True)
+    create_time = models.DateTimeField(auto_created=True,auto_now=True, null=False)
     update_time = models.DateTimeField(auto_now=True)
     # not truly delete in database, but marked as deleted, so it would not be queried out
     is_deleted = models.BooleanField('isDelete', default=False)
