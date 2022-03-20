@@ -28,9 +28,9 @@
                     </svg>
                     <span class="fs-3">Welcome to Glasgow Online Forum</span>
                 </a>
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                     <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-                </form>
+                </form> -->
                 <div class="text-end ">
                     {% if not request.user.is_authenticated %}
                         <a class="btn btn-dark" href="{% url 'forum:login' %} " role="button">Login</a>
