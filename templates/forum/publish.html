@@ -29,17 +29,9 @@
                     </label>
                 </td>
             </tr>
-    
+
             <tr>
-                <th valign="top">Post Intro</th>
-                <td>
-                    <label>
-                        <input required id="topic_introduce" maxlength="80" name="t_introduce" size="60" type="text">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <th valign="top">Post content</th>
+                <th valign="top">Content</th>
                 <td>
                     <div class="body_count">
                         <textarea style="width: 700px;" cols="62" rows="20" name="t_content"></textarea>
@@ -58,13 +50,16 @@
             </tr>
     
             <tr>
-                <th>Kind of Topics</th>
+                <th>Topic</th>
                 <td>
                     <div>
                         <select name="t_kind">
-                            {% for kind in kinds %}
-                                <option value="{{ kind.id }}">{{ kind.k_name }}</option>
-                            {% endfor %}
+                            <option value ="Hot Posts">Hot Posts</option>
+                            <option value ="Sale of Used Items">Sale of Used Items</option>
+                            <option value ="Flats to Rent">Flats to Rent</option>
+                            <option value ="Activities">Activities</option>
+                            <option value ="Universities">Universities</option>
+                            <option value ="Coffee Break">Coffee Break</option>
                         </select>
                     </div>
                 </td>

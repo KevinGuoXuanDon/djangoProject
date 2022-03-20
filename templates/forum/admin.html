@@ -6,10 +6,11 @@ Admin login
 
 <!-- Admin login  -->
 {% block body_block %}
+<link rel="stylesheet" href="/static/css/admin.css">
 <div style="width: 100%;height: 60%;">
     <div style="width: 300px; height: 100px; margin: 0 auto;margin-top: 15%;margin-bottom: 20%;">
         <div class="span4">
-
+            <div class="admin_title">Admin login</div>
             <form id="admin_login_form" method="post" action="{% url 'forum:admin' %}">
                 {% csrf_token %}
                 <div class="input-prepend" style="width: 300px;">
@@ -22,16 +23,11 @@ Admin login
                     <input name="password" style="width: 200px" class="span2" id="pwd" size="16" type="password"
                         placeholder="Password">
                 </div>
-                <div style="width: 300px;padding: 20px;margin: 0 auto;">
-                    <input id="login-button" style="margin-right: 20px;margin-left: 20px;" class="btn btn-large"
-                        type="submit">Login
-                    </button>
-                    <!-- <button id="register-button" style="margin-right: 20px;margin-left: 20px;"
-                    class="btn btn-large btn-inverse" type="submit">Cancel
-                </button> -->
-                </div>
-            </form>
+                <input id="login-button" class="submit_btn" type="submit" value="Login">
+                </input>
         </div>
+        </form>
     </div>
+</div>
 </div>
 {% endblock %}
