@@ -14,12 +14,12 @@ Admin login
             <form id="admin_login_form" method="post" action="{% url 'forum:admin' %}">
                 {% csrf_token %}
                 <div class="input-prepend" style="width: 300px;">
-                    <span class="add-on">Admin username：</span>
+                    <span class="add-on">Admin username:</span>
                     <input name="username" style="width: 200px" class="span2" id="uid" size="16" type="text"
                         placeholder="Username">
                 </div>
                 <div class="input-prepend">
-                    <span class="add-on">Admin password：</span>
+                    <span class="add-on">Admin password:</span>
                     <input name="password" style="width: 200px" class="span2" id="pwd" size="16" type="password"
                         placeholder="Password">
                 </div>

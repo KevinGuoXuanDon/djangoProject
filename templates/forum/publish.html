@@ -12,7 +12,7 @@
     
     
     <h3>Publish a post</h3>
-    <form accept-charset="UTF-8" action="/forum/published/" class="publish" id="new_topic" method="post"  enctype="multipart/form-data">
+    <form accept-charset="UTF-8" action="{% url 'forum:published' %}" class="publish" id="new_topic" method="post"  enctype="multipart/form-data">
         {% csrf_token %}
         <table width="100%" border="0" cellspacing="0" cellpadding="6">
             <colgroup>
