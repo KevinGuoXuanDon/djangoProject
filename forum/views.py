@@ -12,6 +12,7 @@ from forum.models import Module, Post
 from django import forms
 from django.views import View
 
+
 # Create your views here.
 
 def index(request):
@@ -19,8 +20,7 @@ def index(request):
     standard_list = Module.objects.order_by('create_time')[:6]
     for topic in standard_list:
         topic.name = str.lower(topic.name)
-        topic.name = topic.name.replace(" ","-")
-    
+        topic.name = topic.name.replace(" ", "-")
 
     context_dict = {}
     context_dict['topics'] = topic_list
@@ -28,16 +28,19 @@ def index(request):
 
     return render(request, 'forum/index.html', context=context_dict)
 
+
 def about(request):
     context_dict = {}
 
     return render(request, 'forum/about.html', context_dict)
+
 
 @login_required
 def published(request):
     context_dict = {}
 
     return render(request, 'forum/published.html', context_dict)
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -51,33 +54,35 @@ def user_login(request):
                 login(request, user)
                 next = request.POST.get('next')
                 if next:
-                    return redirect(next)
+                    redirect(next)
                 return JsonResponse(data={
-                        'code': 0,
-                        'msg': 'login success',
-                        'data': {
-                            'url': reverse('forum:index')
-                        }
+                    'code': 0,
+                    'msg': 'login success',
+                    'data': {
+                        'url': reverse('forum:index')
+                    }
                 })
             else:
                 return JsonResponse(data={
-                        'code': -1,
-                        'msg': 'user is inactive',
-                        'data': {}
+                    'code': -1,
+                    'msg': 'user is inactive',
+                    'data': {}
                 })
         else:
             return JsonResponse(data={
-                        'code': -1,
-                        'msg': 'Invalid login details supplied.',
-                        'data': {}
-                })
+                'code': -1,
+                'msg': 'Invalid login details supplied.',
+                'data': {}
+            })
     else:
         return render(request, 'forum/login.html')
+
 
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('forum:index'))
+
 
 def register(request):
     registered = False
@@ -114,7 +119,9 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-    return render(request, 'forum/register.html', context = {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+    return render(request, 'forum/register.html',
+                  context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
 
 def admin(request):
     if request.method == 'POST':
@@ -138,18 +145,21 @@ def admin(request):
         #     print(f"Invalid login details: {username}, {password}")
         #     return HttpResponse("Invalid login details supplied.")
 
+
 def admin_page(request):
-    return render(request, 'forum/admin_page.html', {"post_form":Post.objects.all()})
+    return render(request, 'forum/admin_page.html', {"post_form": Post.objects.all()})
+
 
 @login_required
 def delete_post(request, id):
-    p=Post.objects.get(id=id)
+    p = Post.objects.get(id=id)
     p.is_deleted = True
     p.delete_time = timezone.now()
     p.save()
     return HttpResponseRedirect(reverse('forum:admin_page'))
 
-@login_required  
+
+@login_required
 def topic(request, topic_name_slug):
     context_dict = {}
     try:
@@ -160,7 +170,7 @@ def topic(request, topic_name_slug):
         standard_list = Module.objects.order_by('create_time')[:6]
         for standard in standard_list:
             standard.name = str.lower(standard.name)
-            standard.name = standard.name.replace(" ","-")
+            standard.name = standard.name.replace(" ", "-")
         context_dict['posts'] = post_list
         context_dict['topic'] = topic
         context_dict['topiclist'] = topic_list
@@ -172,35 +182,34 @@ def topic(request, topic_name_slug):
         context_dict['standards'] = None
     return render(request, 'forum/topic.html', context=context_dict)
 
+
 @login_required
 def post(request, id):
     context_dict = {}
     try:
-        
+
         post = Post.posts.get(id=id)
         topic = post.parent_module.name
         topic = str.lower(topic)
-        topic = topic.replace(" ","-")
+        topic = topic.replace(" ", "-")
         context_dict['post'] = post
         context_dict['topic'] = topic
 
     except Post.DoesNotExist:
         context_dict['post'] = None
-        context_dict['topic']= None
+        context_dict['topic'] = None
     return render(request, 'forum/post.html', context_dict)
+
 
 @login_required
 def publish(request):
     standard_list = Module.objects.order_by('create_time')[:1]
     for topic in standard_list:
         topic.name = str.lower(topic.name)
-        topic.name = topic.name.replace(" ","-")
-    
+        topic.name = topic.name.replace(" ", "-")
 
     context_dict = {}
     context_dict['standards'] = standard_list
-
-
 
     if request.method == "POST":
         post_form = PostForm(request.POST)
@@ -209,7 +218,7 @@ def publish(request):
             post = post_form.save()
             if 'picture' in request.FILES:
                 post.picture = request.FILES['picture']
-                
+
             post.save()
         else:
             print(post_form.errors)
@@ -218,6 +227,7 @@ def publish(request):
         post_form = PostForm()
 
     return render(request, 'forum/publish.html', context_dict)
+
 
 class IncreaseLikesView(View):
     def post(self, request, *args, **kwargs):
