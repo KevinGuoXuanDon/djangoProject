@@ -12,7 +12,7 @@
     
     
     <h3>Publish a post</h3>
-    <form accept-charset="UTF-8" action="{% url 'forum:published' %}" class="publish" id="new_topic" method="post"  enctype="multipart/form-data">
+    <form accept-charset="UTF-8" action="{% url 'forum:publish' %}" class="publish" id="new_topic" method="post"  enctype="multipart/form-data">
         {% csrf_token %}
         <table width="100%" border="0" cellspacing="0" cellpadding="6">
             <colgroup>
@@ -25,7 +25,7 @@
                 <th>Title</th>
                 <td>
                     <label>
-                        <input required id="topic_title" maxlength="80" name="t_title" size="60" type="text">
+                        <input required id="topic_title" maxlength="80" name="title" size="60" type="text">
                     </label>
                 </td>
             </tr>
@@ -34,7 +34,7 @@
                 <th valign="top">Content</th>
                 <td>
                     <div class="body_count">
-                        <textarea style="width: 700px;" cols="62" rows="20" name="t_content"></textarea>
+                        <textarea style="width: 700px;" cols="62" rows="20" name="content"></textarea>
                     </div>
                 </td>
             </tr>
@@ -44,7 +44,7 @@
                 <td>
     
                     <div>
-                        <input type="file" name="t_photo" accept="image/*">
+                        <input type="file" name="picture" accept="image/*">
                     </div>
                 </td>
             </tr>
@@ -53,13 +53,13 @@
                 <th>Topic</th>
                 <td>
                     <div>
-                        <select name="t_kind">
-                            <option value ="Hot Posts">Hot Posts</option>
-                            <option value ="Sale of Used Items">Sale of Used Items</option>
-                            <option value ="Flats to Rent">Flats to Rent</option>
-                            <option value ="Activities">Activities</option>
-                            <option value ="Universities">Universities</option>
-                            <option value ="Coffee Break">Coffee Break</option>
+                        <select name="parent_module">
+                            <option value ="hot posts">Hot Posts</option>
+                            <option value ="sale of used item">Sale of Used Items</option>
+                            <option value ="flats to rent">Flats to Rent</option>
+                            <option value ="activity">Activities</option>
+                            <option value ="university">Universities</option>
+                            <option value ="coffee break">Coffee Break</option>
                         </select>
                     </div>
                 </td>
