@@ -12,9 +12,16 @@
 
 
 {% block body_block %}
+    
     <a href="{% url 'forum:topic' standards.0.name%}"><button type="button">{{ topiclist.0.name }}</button></a>  <a href="{% url 'forum:topic' standards.1.name%}"><button type="button">{{ topiclist.1.name }}</button></a>  <a href="{% url 'forum:topic' standards.2.name%}"><button type="button">{{ topiclist.2.name }}</button></a>  <a href="{% url 'forum:topic' standards.3.name%}"><button type="button">{{ topiclist.3.name }}</button></a>  <a href="{% url 'forum:topic' standards.4.name%}"><button type="button">{{ topiclist.4.name }}</button></a>  <a href="{% url 'forum:topic' standards.5.name%}"><button type="button">{{ topiclist.5.name }}</button></a>
     {% if topic %}
-        <h1>{{ topic.name }}</h1>
+        
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ topic.name }}</li>
+            </ol>
+          </nav>
 
             {% if user.is_authenticated %}
                 <a href="{% url 'forum:publish' %}"><button type="button">Publish a new post</button></a> <br />
@@ -23,7 +30,17 @@
             {% if posts %}
                 <ul>
                     {% for post in posts %}
-                        <li><a href="{% url 'forum:post' post.id %}">{{ post.title }}</a></li>
+                        <div class="list-group">
+                            <a href="{% url 'forum:post' post.id %}" class="list-group-item list-group-item-action flex-column align-items-start ">
+                              <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ post.title }}</h5>
+                                <small>Publish date: {{ post.create_time}}</small>
+                              </div>
+                              <p class="mb-1">{{ post.content }}</p>
+                              <small>Author:  {{ post.poster }} </small>
+                            </a>
+                        
+                          </div>
                     {% endfor %}
                 </ul>
             {% else %}
