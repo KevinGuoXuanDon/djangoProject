@@ -18,12 +18,14 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('picture',)
 
+
 class PostForm(forms.ModelForm):
     title = forms.CharField(max_length=50)
     content = forms.CharField(max_length=1000)
-    parent_module = forms.ChoiceField(initial=6, choices=((1, 'Hot Posts'), (2, 'Sale of Used Items'), (3, 'Flat to Rent'), (4, 'Activities'), (5, 'Universities'), (6, 'Coffee Break')))
-
+    parent_module = forms.ChoiceField(initial=6, choices=(
+    (1, 'Hot Posts'), (2, 'Sale of Used Items'), (3, 'Flat to Rent'), (4, 'Activities'), (5, 'Universities'),
+    (6, 'Coffee Break')))
 
     class Meta:
         model = Post
-        fields = ('title','content','parent_module')
+        fields = ('title', 'content','picture' ,'parent_module')
