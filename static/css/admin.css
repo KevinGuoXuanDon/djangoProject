@@ -87,3 +87,10 @@
     min-height: 500px;
     padding: 0 20px;
 }
+
+.login_out{
+    width:320px;
+    margin: 0 auto;
+    background: #e1e1e1;
+    padding: 13px;
+}
