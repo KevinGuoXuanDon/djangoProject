@@ -6,21 +6,15 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 class UserProfile(models.Model):
-    # simple call the django's User model, which has filed:
-    # username,password,email,user_permissions,
-    # is_staff,is_active,is_superuser,
-    # last_login,date_joined
-    # We will use: username,email,password,user_permissions, is_active,last_login,date_joined
     NAME_MAX_LENGTH = 30
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
-    sex = models.CharField(max_length=10,blank=True, null=True)
+    sex = models.CharField(max_length=10, blank=True, null=True)
     post_number = models.IntegerField(default=0)
     like_number = models.IntegerField(default=0)
     follow_number = models.IntegerField(default=0)
     follower_number = models.IntegerField(default=0)
-    follow_to = models.TextField(null=False)
-    follow_by = models.TextField(null=False)
+    follow_to = models.TextField(null=False, default="")
+    follow_by = models.TextField(null=False, default="")
     picture = models.ImageField(upload_to='profile_images', blank=True)
     is_muted = models.BooleanField(default=False)
 
@@ -47,7 +41,7 @@ class UserProfile(models.Model):
 
     # toString
     def __str__(self):
-        return self.user.username;
+        return self.user.username
 
 
 # Also can be called Category
@@ -57,7 +51,7 @@ class Module(models.Model):
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     description = models.CharField(max_length=DES_MAX_LENGTH)
     create_time = models.DateTimeField(auto_created=True)
-    slug = models.SlugField(unique= True)
+    slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -69,12 +63,16 @@ class Module(models.Model):
 
 # Manager class, not real model
 class PostManage(models.Manager):
+    def create_post(self, title, content):
+        post = self.create(title=title, content=content)
+        return post
+
     def get_query(self):
         return super(PostManage, self).get_queryset().filter(is_deleted=False)
 
 
 class Post(models.Model):
-    TITLE_MAX_LENGTH = 30;
+    TITLE_MAX_LENGTH = 30
     title = models.CharField(max_length=TITLE_MAX_LENGTH, null=False)
     content = models.TextField('content', blank=True, null=True)
     picture = models.ImageField(upload_to='post_images', blank=True)
@@ -82,14 +80,15 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
     comment_number = models.IntegerField(default=0)
     top = models.BooleanField(default=False)
-    create_time = models.DateTimeField(auto_created=True)
+    create_time = models.DateTimeField(auto_created=True,auto_now=True, null=False)
     update_time = models.DateTimeField(auto_now=True)
     # not truly delete in database, but marked as deleted, so it would not be queried out
     is_deleted = models.BooleanField('isDelete', default=False)
     delete_time = models.DateTimeField('deleteTime', blank=True, null=True)
-    object = PostManage()
-    parent_module = models.ForeignKey(Module,on_delete=models.CASCADE)
-    poster = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
+    objects = models.Manager()
+    posts = PostManage()
+    parent_module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    poster = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -106,9 +105,9 @@ class StarContent(models.Model):
 
 class Comment(models.Model):
     # one user only make a Comment to another user in a post
-    comment_by = models.OneToOneField(UserProfile,on_delete=models.CASCADE, related_name='commenter')
-    comment_to = models.OneToOneField(UserProfile,on_delete=models.CASCADE, related_name='receiver')
-    comment_in = models.OneToOneField(Post,on_delete=models.CASCADE)
+    comment_by = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='commenter')
+    comment_to = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='receiver')
+    comment_in = models.OneToOneField(Post, on_delete=models.CASCADE)
     content = models.TextField(null=False, blank=False)
     # picture??? picture = models.ImageFiled()
     create_time = models.DateTimeField(auto_created=True)

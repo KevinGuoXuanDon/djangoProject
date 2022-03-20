@@ -1,0 +1,88 @@
+{% extends 'forum/base.html' %}
+{% load staticfiles %}
+
+
+{% block title_block %}
+    Home
+{%  endblock %}
+
+{% block header_block %}   
+{% endblock %}
+
+{% block body_block %}
+<link rel="stylesheet" href="/static/css/index.css">
+
+<!-- create the six topic pages -->
+<div class="album py-5 bg-light " align = "middle">
+    <div class="container" align = "middle">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+            <div class="card">
+                <a href="{% url 'forum:topic' standards.0.name%}">
+                <img src="{% static 'images/hot-post.webp' %}" alt="hot-post" class="topic-image" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ topics.0.name }}</h5></a>
+                  <p class="card-text">{{ topics.0.description }}</p>
+                  <a href="{% url 'forum:topic' standards.0.name%}" class="btn btn-primary">View the Topic</a>
+                </div>
+              </div>
+
+              <div class="card" >
+                <a href="{% url 'forum:topic' standards.1.name%}">
+                <img src="{% static 'images/used-sale.jpeg' %}" alt="sale-used" class="topic-image" /> 
+                <div class="card-body">
+                  <h5 class="card-title">{{ topics.1.name }}</h5></a>
+                  <p class="card-text">{{ topics.1.description }}</p>
+                  <a href="{% url 'forum:topic' standards.1.name%}" class="btn btn-primary">View the Topic</a>
+                </div>
+              </div>
+
+              <div class="card" >
+                <a href="{% url 'forum:topic' standards.2.name%}">
+                <img src="{% static 'images/rent.jpeg' %}" alt="sale-used" class="topic-image" /> 
+                <div class="card-body">
+                  <h5 class="card-title">{{ topics.2.name }}</h5></a>
+                  <p class="card-text">{{ topics.2.description }}</p>
+                  <a href="{% url 'forum:topic' standards.2.name%}" class="btn btn-primary">View the Topic</a>
+                </div>
+              </div>
+
+              <div class="card" >
+                <a href="{% url 'forum:topic' standards.3.name%}">
+                <img src="{% static 'images/activity.jpeg' %}" alt="activity" class="topic-image" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ topics.3.name }}</h5></a>
+                  <p class="card-text">{{ topics.3.description }}</p>
+                  <a href="{% url 'forum:topic' standards.3.name%}" class="btn btn-primary">View the Topic</a>
+                </div>
+              </div>
+
+              <div class="card" >
+                <a href="{% url 'forum:topic' standards.4.name%}">
+                <img src="{% static 'images/university.jpeg' %}" alt="university" class="topic-image" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ topics.4.name }}</h5></a>
+                  <p class="card-text">{{ topics.4.description }}</p>
+                  <a href="{% url 'forum:topic' standards.4.name%}" class="btn btn-primary">View the Topic</a>
+                </div>
+              </div>
+
+              <div class="card" >
+                <a href="{% url 'forum:topic' standards.5.name%}">
+                <img src="{% static 'images/coffee-break.jpeg' %}" alt="coffee-break" class="topic-image" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ topics.5.name }}</h5></a>
+                  <p class="card-text">{{ topics.5.description }}</p>
+                  <a href="{% url 'forum:topic' standards.5.name%}" class="btn btn-primary">View the Topic</a>
+                </div>
+              </div>
+                
+                
+               
+    
+            
+        </div>
+</div>
+    
+</div>
+
+{% endblock %}

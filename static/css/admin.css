@@ -1,0 +1,96 @@
+.admin_title{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.submit_btn{
+    background-color: black;
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.list_out{
+    width: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+}
+.bold{
+    font-weight: bold;
+}
+.post_id{
+    width:60px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+.post_title{
+    width:200px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+.post_poster{
+    width:100px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+.post_create_time{
+    width:120px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+.post_likes{
+    width:60px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+.post_views{
+    width:60px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+.post_delete{
+    width:60px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+.main_out{
+    max-width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
+    min-height: 500px;
+    padding: 0 20px;
+}
+
+.login_out{
+    width:320px;
+    margin: 0 auto;
+    background: #e1e1e1;
+    padding: 13px;
+}

@@ -1,0 +1,11 @@
+
+.about {
+    
+    border: 15px solid white;
+    padding: 50px;
+    margin: 20px;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+
+}
