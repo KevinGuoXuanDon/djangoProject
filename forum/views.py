@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from forum.forms import PostForm, UserForm, UserProfileForm
 from forum.models import Module, Post
 from django import forms
+from django.views import View
 
 # Create your views here.
 
@@ -189,3 +190,10 @@ def publish(request):
         post_form = PostForm()
 
     return render(request, 'forum/publish.html', context_dict)
+
+class IncreaseLikesView(View):
+    def post(self, request, *args, **kwargs):
+        post = Post.posts.get(id=kwargs.get('id'))
+        post.likes += 1
+        post.save()
+        return HttpResponse('success')

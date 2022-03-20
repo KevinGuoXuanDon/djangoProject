@@ -16,4 +16,5 @@ urlpatterns = [
     path('topic/<slug:topic_name_slug>/', views.topic, name='topic'),
     path('post/<id>/', views.post, name='post'),
     path('published/', views.published, name='published'),
+    path('likes/<id>/',views.IncreaseLikesView.as_view(), name='increase_likes'),
 ]
