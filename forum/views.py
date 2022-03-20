@@ -162,6 +162,17 @@ def post(request, id):
 
 
 def publish(request):
+    standard_list = Module.objects.order_by('create_time')[:1]
+    for topic in standard_list:
+        topic.name = str.lower(topic.name)
+        topic.name = topic.name.replace(" ","-")
+    
+
+    context_dict = {}
+    context_dict['standards'] = standard_list
+
+
+
     if request.method == "POST":
         post_form = PostForm(request.POST)
 
@@ -177,4 +188,4 @@ def publish(request):
     else:
         post_form = PostForm()
 
-    return render(request, 'forum/publish.html')
+    return render(request, 'forum/publish.html', context_dict)

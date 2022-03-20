@@ -13,7 +13,7 @@
 
 {% block body_block %}
     <!-- Return to the topic page -->
-    <a href="/forum/topic/{{ topic }}"> <button type="button">Return</button></a> <br />
+    <a href="{% url 'forum:topic' topic %}"> <button type="button">Return</button></a> <br />
 
     {% if post %}
         <!-- Show the post here -->
