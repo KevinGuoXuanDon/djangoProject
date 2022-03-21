@@ -89,6 +89,9 @@ def populate():
                                   parent_module=c)
             except:
                 pass
+        print(Module.objects.all())
+        print(UserProfile.objects.all())
+        print(Post.posts.all())
     except:
         pass
 
