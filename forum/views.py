@@ -221,6 +221,7 @@ def publish(request):
             if 'picture' in request.FILES:
                 post.picture = request.FILES['picture']
             post.save()
+            return redirect('forum:index')
         else:
             print(post_form.errors)
 
