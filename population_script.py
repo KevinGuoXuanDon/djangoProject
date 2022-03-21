@@ -27,18 +27,18 @@ def getWords(number=80):
 
 def populate():
     print("start generate data")
-    conn = _sqlite3.connect("../db.sqlite3")
-    cursor = conn.cursor()
-    del2 = "delete from forum_userprofile;"
-    del1 = "delete from auth_user;"
-    del3 = "delete from forum_module"
-    del4 = "delete from forum_post"
-    cursor.execute(del2)
-    cursor.execute(del1)
-    cursor.execute(del3)
-    cursor.execute(del4)
-    conn.commit()
-    conn.close()
+    # conn = _sqlite3.connect("../db.sqlite3")
+    # cursor = conn.cursor()
+    # del2 = "delete from forum_userprofile;"
+    # del1 = "delete from auth_user;"
+    # del3 = "delete from forum_module"
+    # del4 = "delete from forum_post"
+    # cursor.execute(del2)
+    # cursor.execute(del1)
+    # cursor.execute(del3)
+    # cursor.execute(del4)
+    # conn.commit()
+    # conn.close()
     try:
         user1 = User.objects.create(username="admin2", password="admin", is_staff=1, is_superuser=1)
         UserProfile.objects.create(user=user1)

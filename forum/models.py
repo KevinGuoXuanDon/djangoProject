@@ -105,14 +105,14 @@ class StarContent(models.Model):
 
 class Comment(models.Model):
     # one user only make a Comment to another user in a post
-    comment_by = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='commenter')
-    comment_to = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='receiver')
-    comment_in = models.OneToOneField(Post, on_delete=models.CASCADE)
+    comment_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='commenter')
+    comment_to = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='receiver')
+    comment_in = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.TextField(null=False, blank=False)
     # picture??? picture = models.ImageFiled()
-    create_time = models.DateTimeField(auto_created=True)
+    create_time = models.DateTimeField(auto_now_add=True)
 
     # there is no is_deleted filed in this class, so the comment can be truly be deleted
 
     def __str__(self):
-        return self.comment_by + "comment in" + self.comment_in + "to" + self.comment_to
+        return self.content

@@ -102,6 +102,31 @@
     {% else %}
         No Page Here!
     {% endif %}
+
+    <hr>
+    {% if comments %}
+    <div class="row">
+        <h3>Comments: </h3>
+        {% for comment in comments %}
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="meida-body ml-3">
+                        Comment: {{ comment.content }} 
+                    </div>
+                    <div class="meida-body ml-3">
+                        Author:  {{ comment.comment_by }} 
+                    </div>
+                    <div class="text-muted small">
+                        Publish at: {{ comment.create_time}}
+                    </div>
+                </div>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+    
         
 
     {% if user.is_authenticated %}
@@ -113,8 +138,10 @@
     </div>
 
     <div id="div1" style="display:none">
-        <textarea rows="10" cols="100" value="56"></textarea>
-        <p><input type="submit" value="Submit" /></p>
+        <form action="/forum/comment/{{post.id}}/" method="post">
+        <textarea rows="10" cols="100" name='content' placeholder="please input your comment"></textarea>
+        <input type="submit" value="Submit" />
+    </form>
     </div>
 </div>
     {% endif %}

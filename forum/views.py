@@ -11,7 +11,7 @@ from django.http import JsonResponse
 from forum import models
 # from numpy import true_divide
 from forum.forms import PostForm, UserForm, UserProfileForm
-from forum.models import Module, Post, UserProfile
+from forum.models import Module, Post, UserProfile, Comment
 from django import forms
 from django.views import View
 
@@ -188,9 +188,14 @@ def post(request, id):
         topic = post.parent_module.name
         topic = str.lower(topic)
         topic = topic.replace(" ", "-")
+
+        comments = Comment.objects.filter(comment_in=post).all()
+        for comment in comments:
+            # print("#########")
+            print(comment)
         context_dict['post'] = post
         context_dict['topic'] = topic
-
+        context_dict['comments'] = comments
     except Post.DoesNotExist:
         context_dict['post'] = None
         context_dict['topic'] = None
@@ -229,6 +234,30 @@ def publish(request):
         post_form = PostForm()
 
     return render(request, 'forum/publish.html', context_dict)
+
+@login_required
+def comment(request,id):
+
+    if request.method == "POST":
+        try:
+            content = request.POST.get('content')
+            user = User.objects.get(username=request.user.username)
+            userprofile = UserProfile.objects.get(user=user)
+            post = Post.objects.get(id=id)
+
+            comment = Comment(
+                comment_by = userprofile,
+                comment_to = userprofile,
+                comment_in = post,
+                content = content
+            )
+            comment.save()
+        except Exception as e:
+            print(e)
+            return redirect('forum:index')
+
+        return redirect(reverse('forum:post',kwargs={'id':id}))
+
 
 # not in use for now
 class IncreaseLikesView(View):
