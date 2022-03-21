@@ -8,6 +8,7 @@ class ModuleAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fileds = {'slug':('title',)}
 
+# things admin could change
 admin.site.register(UserProfile)
 admin.site.register(Module, ModuleAdmin)
 admin.site.register(Post, PostAdmin)

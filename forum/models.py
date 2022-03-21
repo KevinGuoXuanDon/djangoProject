@@ -44,7 +44,7 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-# Also can be called Category
+# Also can be called Category or topic
 class Module(models.Model):
     NAME_MAX_LENGTH = 50
     DES_MAX_LENGTH = 50

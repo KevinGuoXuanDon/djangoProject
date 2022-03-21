@@ -30,7 +30,7 @@ class UserProfileTest(TestCase):
 
 
 class HttpTest(TestCase):
-    # user数据需要修改，目前是编造的
+    # user data need to be changed
     user = "1234567"
     host = "http://127.0.0.1:8000/forum"
     false = False
@@ -42,7 +42,7 @@ class HttpTest(TestCase):
     DELETE = "DELETE"
     PUT = "PUT"
     headers = {'content-Type': 'application/json', 'Accept': '*/*'}
-    # login数据需要修改
+    # login data need to be changed
     login_data = json.dumps({"phone": user,
                              "pwd": "e10adc3949ba59abbe56e057f20f883e",
                              "login_type": 0,
@@ -60,14 +60,14 @@ class HttpTest(TestCase):
         except:
             self.assert_(False, "failed to pass basic login, due to connection overtime")
         if login_content["code"] == 0:
-            self.assert_(True, "login 成功")
+            self.assert_(True, "login success")
             token = login_content["data"]["token"]
             print("token:" + token)
         else:
             print("login fail")
         if not token:
             self.assert_(False, "login anomaly")
-            raise Exception("登录异常")
+            raise Exception("login error")
         self.headers["user-token"] = token
 
     def test(self, method, url, body_data=None, query_string=None, rest_query_string=None):

@@ -1,4 +1,5 @@
 function show2()
+// show saved states
 {
     var value = document.getElementById("div4").style.display;
     if(value=="none")
