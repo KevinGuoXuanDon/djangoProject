@@ -26,6 +26,7 @@ def getWords(number=80):
 
 
 def populate():
+    print("start generate data")
     conn = _sqlite3.connect("../db.sqlite3")
     cursor = conn.cursor()
     del2 = "delete from forum_userprofile;"
@@ -42,6 +43,7 @@ def populate():
         user1 = User.objects.create(username="admin2", password="admin", is_staff=1, is_superuser=1)
         UserProfile.objects.create(user=user1)
     except:
+        print("admin insert failed")
         pass
     try:
         hot_posts = add_module("hot posts")
@@ -89,7 +91,11 @@ def populate():
                                   parent_module=c)
             except:
                 pass
+        print(Module.objects.all())
+        print(UserProfile.objects.all())
+        print(Post.posts.all())
     except:
+        print("No data insert")
         pass
 
 
@@ -102,3 +108,4 @@ if __name__ == '__main__':
     print('Starting population script...')
     populate()
     print("done")
+
