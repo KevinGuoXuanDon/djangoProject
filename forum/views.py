@@ -18,6 +18,7 @@ from django.views import View
 
 # Create your views here.
 
+# this is the home page, show topics
 def index(request):
     topic_list = Module.objects.order_by('create_time')[:6]
     standard_list = Module.objects.order_by('create_time')[:6]
@@ -44,7 +45,7 @@ def published(request):
 
     return render(request, 'forum/published.html', context_dict)
 
-
+# for user to login
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -87,7 +88,7 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('forum:index'))
 
-
+# for user to regist
 def register(request):
     registered = False
 
@@ -126,7 +127,7 @@ def register(request):
     return render(request, 'forum/register.html',
                   context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
-
+# for admin to login
 def admin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -139,15 +140,6 @@ def admin(request):
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, 'forum/admin.html')
-        # if user:
-        #     if user.is_active:
-        #         login(request, user)
-        #         return redirect(reverse('forum:index'))
-        #     else:
-        #         return HttpResponse("Your forum account is disabled.")
-        # else:
-        #     print(f"Invalid login details: {username}, {password}")
-        #     return HttpResponse("Invalid login details supplied.")
 
 
 def admin_page(request):
@@ -162,7 +154,7 @@ def delete_post(request, id):
     p.save()
     return HttpResponseRedirect(reverse('forum:admin_page'))
 
-
+# used in topic page to see the list of posts in the topic
 @login_required
 def topic(request, topic_name_slug):
     context_dict = {}
@@ -186,7 +178,7 @@ def topic(request, topic_name_slug):
         context_dict['standards'] = None
     return render(request, 'forum/topic.html', context=context_dict)
 
-
+# used to read the post
 @login_required
 def post(request, id):
     context_dict = {}
@@ -204,7 +196,7 @@ def post(request, id):
         context_dict['topic'] = None
     return render(request, 'forum/post.html', context_dict)
 
-
+# used to publish a post
 @login_required
 def publish(request):
     standard_list = Module.objects.order_by('create_time')[:1]
@@ -237,7 +229,7 @@ def publish(request):
 
     return render(request, 'forum/publish.html', context_dict)
 
-
+# not in use for now
 class IncreaseLikesView(View):
     def post(self, request, *args, **kwargs):
         post = Post.posts.get(id=kwargs.get('id'))

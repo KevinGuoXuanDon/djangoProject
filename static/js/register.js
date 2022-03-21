@@ -1,3 +1,4 @@
+// pass the message to views
 function messageUser (text) {
     $('#content1').html(text)
     $('#exampleModal1').modal('show')

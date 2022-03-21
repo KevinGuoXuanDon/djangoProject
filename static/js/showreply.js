@@ -1,4 +1,5 @@
 function show()
+// show the textarea of reply
 {
     var value = document.getElementById("div1").style.display;
     if(value=="none")

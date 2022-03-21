@@ -7,12 +7,14 @@
 
 
 {% block body_block %}
+<!-- Return to the topic page -->
 <div style="position:relative;left:120px;">
 <a href="{% url 'forum:topic' standards.0.name %}"> <button type="button">Return</button></a> <br />
 <body class="home" style="font-size: 18px">
     
     
     <h3>Publish a post</h3>
+    <!-- get the information input from the users -->
     <form accept-charset="UTF-8" action="{% url 'forum:publish' %}" class="publish" id="new_topic" method="post"  enctype="multipart/form-data">
         {% csrf_token %}
         <table width="100%" border="0" cellspacing="0" cellpadding="6">
@@ -69,7 +71,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <button type="submit">Publish</button>
+                    <button type="submit">Submit</button>
                 </td>
             </tr>
             </tbody>

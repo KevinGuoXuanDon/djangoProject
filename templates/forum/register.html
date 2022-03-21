@@ -14,15 +14,6 @@
         <a href="{% url 'forum:index' %}">Return to the homepage.</a><br /> <a href="{% url 'forum:logout' %}">Logout.</a><br />
     {% else %}
        <strong>Please register here!</strong> 
-        <!-- <form id="user_form" method="post" action="{% url 'forum:register' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-    
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-    
-            <input type="submit" name="submit" value="Register" />
-        </form> -->
-    
         <form role="form"  id="user_form" method="post" action="{% url 'forum:register' %}" enctype="multipart/form-data" onsubmit= "register();return false">
             {% csrf_token %}
           
